@@ -7,6 +7,15 @@
     <groupId>com.example</groupId>
     <artifactId>wejsciowka</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+            <version>4.0</version>
+        </dependency>
+
+    </dependencies>
 
 
 </project>

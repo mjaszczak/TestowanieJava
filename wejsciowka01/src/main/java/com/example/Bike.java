@@ -5,7 +5,14 @@ public class Bike {
     public String nazwa;
     public int numer_seryjny;
 
-    public void setId(Long id) {
+    public Bike(long id, String nazwa, int numer_seryjny){
+
+        this.id = id;
+        this.nazwa = nazwa;
+        this.numer_seryjny = numer_seryjny;
+    }
+
+    public void setId(long id) {
 
         this.id = id;
     }
