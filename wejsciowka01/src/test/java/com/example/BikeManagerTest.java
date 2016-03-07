@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class BikeManagerTest {
     BikeManager bikeManager = new BikeManager();
-    private final static int ID=1234;
+    private final static long ID=1234;
     private final static String NAZWA="Rowerek";
     private final static int NUMER=12;
 
@@ -19,6 +19,7 @@ public class BikeManagerTest {
 
         assertEquals(1, bikeManager.bikes.size());
         assertEquals(bike, bikeManager.bikes.get(0));
+
     }
 
     @Test
