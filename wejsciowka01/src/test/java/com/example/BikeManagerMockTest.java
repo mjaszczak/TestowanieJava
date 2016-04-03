@@ -29,19 +29,46 @@ public class BikeManagerMockTest {
     private final static long ID=1234;
     private final static String NAZWA="Rowerek";
     private final static int NUMER=12;
-    Bike rower = new Bike(ID, NAZWA, NUMER);
-    List<Bike> jakaslista = new ArrayList<Bike>();
-    jakaslista.  add(rower);
+    public Bike rower = new Bike(ID, NAZWA, NUMER);
+    public List<Bike> jakaslista = new ArrayList<Bike>();
+    //jakaslista.add(rower);
     @Test
-    public void ListCheck() {
+    public void AddCheck() {
         expect(mock.add(rower)).andReturn(true).times(1);
-        expect(mock.remove(rower)).andReturn(true).atLeastOnce();
-        expect(mock.getall()).andReturn(jakaslista).anyTimes());
         replay(mock);
         assertEquals(true, bike.dodawanie(rower));
-        assertEquals(true, bike.usuwanie(rower));
-
         verify(mock);
     }
 
+    @Test
+    public void RemoveCheck() {
+        expect(mock.remove(rower)).andReturn(true).atLeastOnce();
+        replay(mock);
+        assertEquals(true, bike.usuwanie(rower));
+        verify(mock);
+    }
+
+    @Test
+    public void GetAllCheck() {
+        expect(mock.getall()).andReturn(jakaslista).anyTimes();
+        replay(mock);
+        assertEquals(jakaslista, bike.zapodaj());
+        verify(mock);
+    }
+
+    @Test
+    public void FindByNazwaCheck() {
+        expect(mock.findByNazwa(NAZWA)).andReturn(rower).anyTimes();
+        replay(mock);
+        assertEquals(rower, bike.findByNazwa(NAZWA));
+        verify(mock);
+    }
+
+    @Test
+    public void FindByIdCheck() {
+        expect(mock.findById(ID)).andReturn(rower).anyTimes();
+        replay(mock);
+        assertEquals(rower, bike.findById(ID));
+        verify(mock);
+    }
 }

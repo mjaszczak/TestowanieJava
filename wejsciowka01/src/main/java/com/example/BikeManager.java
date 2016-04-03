@@ -32,4 +32,11 @@ public class BikeManager {
         return mylist.getall();
     }
 
+    public Bike findByNazwa(String nazwa){
+        return mylist.findByNazwa(nazwa);
+    }
+
+    public Bike findById(long id){
+        return mylist.findById(id);
+    }
 }
