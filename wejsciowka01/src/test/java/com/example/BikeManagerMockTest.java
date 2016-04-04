@@ -19,13 +19,6 @@ public class BikeManagerMockTest {
     private BikeManager bike;
     private IMyList mock;
 
-
-    @Before
-    public void setUp() {
-        mock = createMock(IMyList.class);
-        bike = new BikeManager(mock);
-    }
-
     private final static long ID=1234;
     private final static String NAZWA="Rowerek";
     private final static int NUMER=12;
@@ -37,6 +30,14 @@ public class BikeManagerMockTest {
     Bike rower2 = new Bike(ID_2, NAZWA_2, NUMER_2);
 
     public List<Bike> jakaslista = new ArrayList<Bike>();
+
+    @Before
+    public void setUp() {
+        mock = createMock(IMyList.class);
+        bike = new BikeManager(mock);
+    }
+
+
 
     @Test
     public void addCheck() {
@@ -69,9 +70,9 @@ public class BikeManagerMockTest {
     public void findByNazwaCheck() {
         jakaslista.add(rower);
         jakaslista.add(rower2);
-        expect(mock.findByNazwa(NAZWA)).andReturn(rower).anyTimes();
+        expect(mock.findByNazwa(NAZWA)).andReturn(jakaslista).anyTimes();
         replay(mock);
-        assertEquals(rower, bike.findByNazwa(NAZWA));
+        assertEquals(jakaslista, bike.findByNazwa(NAZWA));
         verify(mock);
     }
 

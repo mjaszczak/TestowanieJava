@@ -7,5 +7,5 @@ public interface IMyList {
     boolean remove(Bike bike);
     List<Bike> getall();
     Bike findById(long id);
-    Bike findByNazwa(String nazwa);
+    List<Bike> findByNazwa(String nazwa);
 }

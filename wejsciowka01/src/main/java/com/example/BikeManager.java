@@ -32,7 +32,7 @@ public class BikeManager {
         return mylist.getall();
     }
 
-    public Bike findByNazwa(String nazwa){
+    public List<Bike> findByNazwa(String nazwa){
         return mylist.findByNazwa(nazwa);
     }
 
