@@ -30,6 +30,12 @@ public class BikeManagerMockTest {
     private final static String NAZWA="Rowerek";
     private final static int NUMER=12;
     Bike rower = new Bike(ID, NAZWA, NUMER);
+
+    private final static long ID_2=1235;
+    private final static String NAZWA_2="Kolarka";
+    private final static int NUMER_2=99;
+    Bike rower2 = new Bike(ID_2, NAZWA_2, NUMER_2);
+
     public List<Bike> jakaslista = new ArrayList<Bike>();
 
     @Test
@@ -42,6 +48,7 @@ public class BikeManagerMockTest {
 
     @Test
     public void removeCheck() {
+        jakaslista.add(rower);
         expect(mock.remove(rower)).andReturn(true).atLeastOnce();
         replay(mock);
         assertEquals(true, bike.usuwanie(rower));
@@ -50,6 +57,8 @@ public class BikeManagerMockTest {
 
     @Test
     public void getAllCheck() {
+        jakaslista.add(rower);
+        jakaslista.add(rower2);
         expect(mock.getall()).andReturn(jakaslista).anyTimes();
         replay(mock);
         assertEquals(jakaslista, bike.zapodaj());
@@ -58,6 +67,8 @@ public class BikeManagerMockTest {
 
     @Test
     public void findByNazwaCheck() {
+        jakaslista.add(rower);
+        jakaslista.add(rower2);
         expect(mock.findByNazwa(NAZWA)).andReturn(rower).anyTimes();
         replay(mock);
         assertEquals(rower, bike.findByNazwa(NAZWA));
@@ -66,6 +77,8 @@ public class BikeManagerMockTest {
 
     @Test
     public void findByIdCheck() {
+        jakaslista.add(rower);
+        jakaslista.add(rower2);
         expect(mock.findById(ID)).andReturn(rower).anyTimes();
         replay(mock);
         assertEquals(rower, bike.findById(ID));
