@@ -9,7 +9,7 @@ import org.jbehave.core.reporters.StoryReporterBuilder;
 import org.jbehave.core.steps.InjectableStepsFactory;
 import org.jbehave.core.steps.InstanceStepsFactory;
 
-public class MenagerStoryTest extends JUnitStory {
+public class ManagerStoryTest extends JUnitStory {
 
     @Override
     public Configuration configuration() {
