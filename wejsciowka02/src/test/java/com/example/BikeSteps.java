@@ -12,31 +12,47 @@ import static org.hamcrest.CoreMatchers.*;
 
 public class BikeSteps {
 
+private BikeManager manager;
     private Bike bike;
-    BikeManager bikeManager = new BikeManager();
 
     @Given("a bike")
     public void bikeSetup(){
-        bike = new Bike(1, "Author", 2334);
+
+        manager = new BikeManager();
     }
 
-    @When("add bike to list")
-    public void addBike(){
-
-        bikeManager.addBike(bike);
+    @When("add $name bike to list")
+    public void addBike(String name){
+        Bike bike = new Bike(1, name, 2334);
     }
 
-    @When("delete bike from list")
-    public void deleteBike(){
-
-
-        bikeManager.deleteBike(bike);
+    @When("delete  $name bike from list")
+    public void deleteBike(String name){
+        Bike bike = new Bike(1, name, 2334);
     }
 
     @Then("get size should return $size")
     public void getSize(int size){
-        assertEquals(size, bikeManager.ile());
+        assertEquals(size, manager.ile());
     }
+
+    @Then("should be added $number bike")
+    public void addedBike(){
+        int size = manager.ile();
+        manager.addBike(bike);
+        assertEquals(size + 1, manager.ile());
+    }
+
+    @Then("should be deleted bike")
+    public void deleteBike(){
+
+        manager.addBike(bike);
+        int size = manager.ile();
+        manager.deleteBike(bike);
+        assertEquals(size - 1, manager.ile());
+    }
+
+
 
 
 
