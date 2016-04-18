@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BikeManager {
-   /* List<Bike> bikes = new ArrayList<Bike>();
+    List<Bike> bikes = new ArrayList<Bike>();
 
     public void addBike(Bike bike){
         bikes.add(bike);
@@ -12,9 +12,15 @@ public class BikeManager {
 
     public void deleteBike(Bike bike){
         bikes.remove(bike);
-    }*/
+    }
 
-    private IMyList mylist;
+    public int ile(){
+       return bikes.size();
+    }
+
+
+
+    /*private IMyList mylist;
 
     public BikeManager(IMyList mylist){
         this.mylist = mylist;
@@ -38,5 +44,5 @@ public class BikeManager {
 
     public Bike findById(long id){
         return mylist.findById(id);
-    }
+    }*/
 }
