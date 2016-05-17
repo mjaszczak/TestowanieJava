@@ -47,12 +47,19 @@ public class PersonManagerTest {
 		Person person2 = new Person(NAME_2, YOB_2);
 		Person person3 = new Person(NAME_3, YOB_3);
 		personManager.clearPersons();
-		personManager.getAllPersons();
+
 		assertEquals(1,personManager.addPerson(person1));
 		assertEquals(1,personManager.addPerson(person2));
 		assertEquals(1,personManager.addPerson(person3));
 
-		personManager.deletePerson(person2);
+		List<Person> personsBefore = personManager.getAllPersons();
+		assertEquals(3,personsBefore.size());
+
+		Person deletingPerson = personsBefore.get(0);
+		personManager.deletePerson(deletingPerson);
+
+		List<Person> personsAfter = personManager.getAllPersons();
+		assertEquals(2,personsAfter.size());
 
 	}
 

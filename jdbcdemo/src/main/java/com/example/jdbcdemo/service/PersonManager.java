@@ -23,6 +23,7 @@ public class PersonManager {
 	private PreparedStatement deletePersonStmt;
 	private PreparedStatement deleteAllPersonsStmt;
 	private PreparedStatement getAllPersonsStmt;
+	private PreparedStatement updatePersonStmt;
 
 	private Statement statement;
 
@@ -51,7 +52,9 @@ public class PersonManager {
 			getAllPersonsStmt = connection
 					.prepareStatement("SELECT id, name, yob FROM Person");
 			deletePersonStmt = connection
-					.prepareStatement("DELETE FROM Person WHERE name = ? AND yob = ?");
+					.prepareStatement("DELETE FROM Person WHERE id = ?");
+			updatePersonStmt = connection
+					.prepareStatement("UPDATE Person SET name = ?, yob = ? WHERE id = ?");
 
 
 		} catch (SQLException e) {
@@ -88,8 +91,7 @@ public class PersonManager {
 	public int deletePerson(Person person) {
 		int count = 0;
 		try {
-			deletePersonStmt.setString(1, person.getName());
-			deletePersonStmt.setInt(2, person.getYob());
+			deletePersonStmt.setLong(1, person.getId());
 
 			count = deletePersonStmt.executeUpdate();
 
