@@ -1,5 +1,6 @@
 package com.example.restservicedemo.rest;
 
+
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -18,65 +19,50 @@ import com.example.restservicedemo.service.GuitarManager;
 @Path("guitar")
 public class GuitarRESTService {
 
-    private GuitarManager pm = new GuitarManager();
-
-    @GET
-    @Path("/")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Guitar> getAllGuitar(){
-        List<Guitar> guitar = pm.getAllGuitars();
-        return guitar;
-    }
+    private GuitarManager gm = new GuitarManager();
 
     @GET
     @Path("/{guitarId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Guitar getGuitar(@PathParam("guitarId") Long id){
-        List<Guitar> guitar = pm.getGuitar(id);
-        Guitar g = guitar.get(0);
+    public Guitar getGuitar(@PathParam("guitarId") Long id) {
+        Guitar g = gm.getGuitar(id);
         return g;
     }
 
     @POST
     @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response addGuitar(Guitar guitar){
-        pm.addGuitar(guitar);
+    public Response addGuitar(Guitar guitar) {
+        gm.addGuitar(guitar);
         return Response.status(201).entity("Guitar").build();
     }
 
-    @POST
-    @Path("/{guitarId}")
+    @GET
+    @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response updateGuitar(@PathParam("guitarId") Long id){
-        List<Guitar> g = pm.getGuitar(id);
-        Guitar guitar = g.get(0);
-        pm.updateGuitar(guitar, "Brand", "Model");
-        return Response.status(200).build();
+    public List<Guitar> getAllGuitars() {
+        List<Guitar> guitars = gm.getAllGuitars();
+        return guitars;
     }
-
 
     @GET
     @Path("/test")
     @Produces(MediaType.TEXT_HTML)
-    public String test(){
+    public String testGuitar() {
         return "REST API /guitar is running";
     }
 
-
     @DELETE
-    @Path("/")
-    public Response clearGuitars(){
-        pm.clearGuitars();
+    public Response clearGuitars() {
+        gm.clearGuitars();
         return Response.status(200).build();
     }
 
-    @DELETE
+    @POST
     @Path("/{guitarId}")
-    public Response deleteGuitar(@PathParam("guitarId") Long id){
-        List<Guitar> g = pm.getGuitar(id);
-        Guitar guitar = g.get(0);
-        pm.deleteGuitar(guitar);
+    public Response updateGuitar(@PathParam("guitarId") Long id){
+        Guitar guitar = gm.getGuitar(id);
+        gm.updateGuitar(guitar, "Czibson", "Dres Paul");
         return Response.status(200).build();
     }
 
