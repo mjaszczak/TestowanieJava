@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import javax.ws.rs.core.MediaType;
 
 import com.example.restservicedemo.domain.Guitar;
+import com.example.restservicedemo.service.GuitarManager;
 import com.jayway.restassured.RestAssured;
 import org.dbunit.Assertion;
 import org.dbunit.IDatabaseTester;
@@ -29,6 +30,8 @@ public class GuitarServiceRESTDBTest {
 
     private static IDatabaseConnection connection ;
     private static IDatabaseTester databaseTester;
+
+    private static GuitarManager pm = new GuitarManager();
 
     @BeforeClass
     public static void setUp() throws Exception{
