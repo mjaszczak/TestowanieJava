@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <GUITAR ID="1" BRAND="Czibson" MODEL="Dres Paul"/>
+  <GUITAR ID="2" BRAND="Fender" MODEL="Stratocaster"/>
+</dataset>
