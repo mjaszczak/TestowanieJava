@@ -53,7 +53,7 @@ public class GuitarServiceRESTDBTest {
     }
 
     @Test
-    public void addPeson() throws Exception{
+    public void addGuitar() throws Exception{
 
         Guitar aGuitar = new Guitar(2,"Fender", "Stratocaster");
         given().contentType(MediaType.APPLICATION_JSON).body(aGuitar)
